@@ -1,10 +1,56 @@
+import { Card } from "@components/Card/Card";
 import { Navbar } from "@components/Navbar/Navbar";
 import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import React from "react";
+import React, { createRef, useState } from "react";
 
 const Home: React.FC = () => {
+    const ref = createRef<HTMLDivElement>();
+    const [dyvision, setDivision] = useState("fifa");
+    const scroll = (scrollOffset: number) => {
+        if (ref && ref.current) {
+            ref.current.scrollLeft += scrollOffset;
+        }
+    };
+
+    const players = {
+        fifa: [
+            {
+                id: 1,
+                nick: "fifa1",
+            },
+            {
+                id: 2,
+                nick: "fifa2",
+            },
+            {
+                id: 3,
+                nick: "fifa3",
+            },
+            {
+                id: 4,
+                nick: "fifa4",
+            },
+        ],
+        cs: [
+            {
+                id: 1,
+                nick: "cs1",
+            },
+            {
+                id: 2,
+                nick: "cs2",
+            },
+        ],
+        sr: [
+            {
+                id: 1,
+                nick: "sr1",
+            },
+        ],
+    };
     return (
         <>
             <Navbar />
@@ -29,63 +75,60 @@ const Home: React.FC = () => {
             </div>
             <main className="gap-5 max-w-screen-lg mx-auto">
                 <div>
-                    <div className="btn-group">
-                        <button className="btn btn-active">Fifa</button>
-                        <button className="btn">Counter Strike</button>
-                        <button className="btn">Sim Racing</button>
+                    <div className="tabs tabs-boxed">
+                        <button
+                            onClick={() => setDivision("fifa")}
+                            className={`tab ${
+                                dyvision === "fifa" && "tab-active"
+                            }`}
+                        >
+                            Fifa
+                        </button>
+                        <button
+                            onClick={() => setDivision("cs")}
+                            className={`tab ${
+                                dyvision === "cs" && "tab-active"
+                            }`}
+                        >
+                            Counter Strike
+                        </button>
+                        <button
+                            onClick={() => setDivision("sr")}
+                            className={`tab ${
+                                dyvision === "sr" && "tab-active"
+                            }`}
+                        >
+                            Sim Racing
+                        </button>
                     </div>
                     <div className="divider"></div>
-                    <div className="flex gap-5">
-                        <div className="card w-96 bg-neutral">
-                            <figure>
-                                <img
-                                    src="https://api.lorem.space/image/car?w=400&h=225"
-                                    alt="car!"
-                                />
-                            </figure>
-                            <div className="card-body">
-                                <h2 className="card-title">Life hack</h2>
-                                <p>How to park your car at your garage?</p>
-                                <div className="card-actions justify-end">
-                                    <button className="btn btn-primary">
-                                        Learn now!
+                    <div className="relative">
+                        <div
+                            className="gap-5 flex rounded-box w-full overflow-x-hidden scroll-smooth"
+                            ref={ref}
+                        >
+                            {players[dyvision as keyof typeof players].map(
+                                (item) => (
+                                    <Card key={item.id} />
+                                ),
+                            )}
+                            {players[dyvision as keyof typeof players].length >
+                                2 && (
+                                <>
+                                    <button
+                                        className="btn btn-square btn-primary absolute top-1/3 left-3 opacity-50 hover:opacity-70"
+                                        onClick={() => scroll(-384)}
+                                    >
+                                        <FontAwesomeIcon icon={faArrowLeft} />
                                     </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card w-96 bg-neutral">
-                            <figure>
-                                <img
-                                    src="https://api.lorem.space/image/car?w=400&h=225"
-                                    alt="car!"
-                                />
-                            </figure>
-                            <div className="card-body">
-                                <h2 className="card-title">Life hack</h2>
-                                <p>How to park your car at your garage?</p>
-                                <div className="card-actions justify-end">
-                                    <button className="btn btn-primary">
-                                        Learn now!
+                                    <button
+                                        className="btn btn-square btn-primary absolute top-1/3 right-3 opacity-50 hover:opacity-70"
+                                        onClick={() => scroll(384)}
+                                    >
+                                        <FontAwesomeIcon icon={faArrowRight} />
                                     </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card w-96 bg-neutral">
-                            <figure>
-                                <img
-                                    src="https://api.lorem.space/image/car?w=400&h=225"
-                                    alt="car!"
-                                />
-                            </figure>
-                            <div className="card-body">
-                                <h2 className="card-title">Life hack</h2>
-                                <p>How to park your car at your garage?</p>
-                                <div className="card-actions justify-end">
-                                    <button className="btn btn-primary">
-                                        Learn now!
-                                    </button>
-                                </div>
-                            </div>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
