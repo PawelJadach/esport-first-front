@@ -7,11 +7,13 @@ import { Hydrate } from "react-query/hydration";
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     const queryClient = new QueryClient();
     return (
-        <QueryClientProvider client={queryClient}>
-            <Hydrate state={pageProps.dehydratedState}>
-                <Component {...pageProps} />
-            </Hydrate>
-        </QueryClientProvider>
+        <>
+            <QueryClientProvider client={queryClient}>
+                <Hydrate state={pageProps.dehydratedState}>
+                    <Component {...pageProps} />
+                </Hydrate>
+            </QueryClientProvider>
+        </>
     );
 }
 
