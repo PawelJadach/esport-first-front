@@ -118,12 +118,12 @@ const Home: React.FC = () => {
             {
                 id: 1,
                 nick: "Kocur",
-                photo: "kocur.webp-4.webp",
+                photo: "kocur-4.webp",
             },
             {
                 id: 2,
                 nick: "Mateusz Peczka",
-                photo: "peczka.webp.webp",
+                photo: "peczka.webp",
             },
             {
                 id: 3,

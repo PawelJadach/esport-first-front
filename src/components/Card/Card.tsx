@@ -15,6 +15,8 @@ export const Card: React.FC<CardProps> = ({ nick, photo }) => {
                     layout="fill"
                     objectFit="cover"
                     objectPosition="top"
+                    placeholder="blur"
+                    blurDataURL={"/images/" + photo}
                 />
             </div>
             <div className="card-body">
