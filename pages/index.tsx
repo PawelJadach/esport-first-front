@@ -5,10 +5,11 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import React, { createRef, useState } from "react";
+import { motion, useAnimation } from "framer-motion";
 
 const Home: React.FC = () => {
     const ref = createRef<HTMLDivElement>();
-    const [dyvision, setDivision] = useState("fifa");
+    const [dyvision, setDivision] = useState("sr");
     const scroll = (scrollOffset: number) => {
         if (ref && ref.current) {
             ref.current.scrollLeft += scrollOffset;
@@ -19,79 +20,186 @@ const Home: React.FC = () => {
         fifa: [
             {
                 id: 1,
-                nick: "fifa1",
+                nick: "mrowa1991",
+                photo: "mrowca.webp",
             },
             {
                 id: 2,
-                nick: "fifa2",
+                nick: "Alagher_PL",
+                photo: "alagher.webp",
             },
             {
                 id: 3,
-                nick: "fifa3",
+                nick: "yoboski87",
+                photo: "yoboski.webp",
             },
             {
                 id: 4,
-                nick: "fifa4",
-            },
-        ],
-        cs: [
-            {
-                id: 1,
-                nick: "cs1",
+                nick: "sQubany_96",
+                photo: "squbany.webp",
             },
             {
-                id: 2,
-                nick: "cs2",
+                id: 5,
+                nick: "Franiu77621",
+                photo: "franiu.webp",
+            },
+            {
+                id: 6,
+                nick: "kwiato91",
+                photo: "kwiato.webp",
+            },
+            {
+                id: 7,
+                nick: "tomasz93pl",
+                photo: "tomasz.webp",
+            },
+            {
+                id: 8,
+                nick: "Czejenos84",
+                photo: "czejenos.webp",
+            },
+            {
+                id: 9,
+                nick: "IIOzSII",
+                photo: "ozs.webp",
+            },
+            {
+                id: 10,
+                nick: "ArtursPe",
+                photo: "arturspe.webp",
+            },
+            {
+                id: 11,
+                nick: "EF_GOZDZiK",
+                photo: "gozdzik.webp",
+            },
+            {
+                id: 12,
+                nick: "WP_ME_MYSZA",
+                photo: "mysza.webp",
+            },
+            {
+                id: 13,
+                nick: "TSP_Antek213",
+                photo: "awatar.webp",
+            },
+            {
+                id: 14,
+                nick: "agalop30",
+                photo: "agalop.webp",
+            },
+            {
+                id: 15,
+                nick: "xPolski_1312",
+                photo: "awatar.webp",
+            },
+            {
+                id: 16,
+                nick: "ciacho93",
+                photo: "ciacho.webp",
+            },
+            {
+                id: 17,
+                nick: "xKryZySx",
+                photo: "kryzys.webp",
+            },
+            {
+                id: 18,
+                nick: "Tadziu1996",
+                photo: "tadziu.webp",
+            },
+            {
+                id: 19,
+                nick: "XxCzarus141xX",
+                photo: "awatar.webp",
             },
         ],
         sr: [
             {
                 id: 1,
-                nick: "sr1",
+                nick: "Kocur",
+                photo: "kocur.webp-4.webp",
+            },
+            {
+                id: 2,
+                nick: "Mateusz Peczka",
+                photo: "peczka.webp.webp",
+            },
+            {
+                id: 3,
+                nick: "Mateusz Kędzia",
+                photo: "kedzia.webp",
+            },
+            {
+                id: 4,
+                nick: "Jakub Kwiatkowski",
+                photo: "awatar.webp",
+            },
+            {
+                id: 5,
+                nick: "Mateusz Grzonka",
+                photo: "awatar.webp",
+            },
+            {
+                id: 6,
+                nick: "Bernard Wojtas",
+                photo: "awatar.webp",
             },
         ],
     };
+
+    const variants = {
+        visible: { opacity: 1 },
+        hidden: { opacity: 0 },
+    };
+
     return (
         <>
             <Navbar />
             <div
-                className="hero min-h-screen py-48 bg-cover bg-no-repeat"
-                // style={{ backgroundImage: `url(/images/hero.png)` }}
+                className="hero min-h-screen py-48 bg-cover bg-no-repeat  overflow-hidden"
+                // style={{ backgroundImage: `url(/images/hero)` }}
             >
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md bg-inherit">
-                        <h1 className="mb-5 text-5xl font-bold">
-                            <span className="text-primary">#</span>Born for
-                            Esport
-                        </h1>
+                        <motion.div
+                            initial={{ x: "300%" }}
+                            animate={{ x: 0 }}
+                            transition={{ duration: 1 }}
+                        >
+                            <h1 className="mb-5 text-5xl font-bold">
+                                <motion.span
+                                    initial="hidden"
+                                    animate="visible"
+                                    variants={variants}
+                                    transition={{ delay: 1 }}
+                                >
+                                    <span className="text-primary">#</span>
+                                </motion.span>
+                                <span>Born for Esport</span>
+                            </h1>
+                        </motion.div>
                         <p className="mb-5">
                             Provident cupiditate voluptatem et in. Quaerat
                             fugiat ut assumenda excepturi exercitationem quasi.
                             In deleniti eaque aut repudiandae et a id nisi.
                         </p>
-                        <button className="btn btn-primary">Get Started</button>
+                        <motion.button
+                            whileTap={{ scale: 0.9 }}
+                            className="btn btn-primary"
+                        >
+                            Get Started
+                        </motion.button>
                     </div>
                 </div>
             </div>
             <main className="gap-5 max-w-screen-lg mx-auto">
-                <div>
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                >
                     <div className="tabs tabs-boxed">
-                        <button
-                            onClick={() => setDivision("fifa")}
-                            className={`tab ${
-                                dyvision === "fifa" && "tab-active"
-                            }`}
-                        >
-                            Fifa
-                        </button>
-                        <button
-                            onClick={() => setDivision("cs")}
-                            className={`tab ${
-                                dyvision === "cs" && "tab-active"
-                            }`}
-                        >
-                            Counter Strike
-                        </button>
                         <button
                             onClick={() => setDivision("sr")}
                             className={`tab ${
@@ -99,6 +207,14 @@ const Home: React.FC = () => {
                             }`}
                         >
                             Sim Racing
+                        </button>
+                        <button
+                            onClick={() => setDivision("fifa")}
+                            className={`tab ${
+                                dyvision === "fifa" && "tab-active"
+                            }`}
+                        >
+                            Fifa
                         </button>
                     </div>
                     <div className="divider"></div>
@@ -109,7 +225,11 @@ const Home: React.FC = () => {
                         >
                             {players[dyvision as keyof typeof players].map(
                                 (item) => (
-                                    <Card key={item.id} />
+                                    <Card
+                                        key={item.id}
+                                        nick={item.nick}
+                                        photo={item.photo}
+                                    />
                                 ),
                             )}
                             {players[dyvision as keyof typeof players].length >
@@ -131,8 +251,12 @@ const Home: React.FC = () => {
                             )}
                         </div>
                     </div>
-                </div>
-                <p className="mt-10">
+                </motion.div>
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    className="mt-10"
+                >
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Sapiente molestias quis corrupti cupiditate illum aut
                     consectetur tempora iusto odio autem, vitae unde
@@ -147,8 +271,12 @@ const Home: React.FC = () => {
                     nesciunt deleniti, rerum recusandae explicabo libero.
                     Deleniti distinctio quas consequatur harum, cupiditate ex,
                     inventore commodi repellat cumque sint ipsam?
-                </p>
-                <p className="mt-10">
+                </motion.p>
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    className="mt-10"
+                >
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Sapiente molestias quis corrupti cupiditate illum aut
                     consectetur tempora iusto odio autem, vitae unde
@@ -163,7 +291,7 @@ const Home: React.FC = () => {
                     nesciunt deleniti, rerum recusandae explicabo libero.
                     Deleniti distinctio quas consequatur harum, cupiditate ex,
                     inventore commodi repellat cumque sint ipsam?
-                </p>
+                </motion.p>
             </main>
             <footer className="p-5 mt-48">
                 <div className="footer items-center text-neutral-content max-w-screen-lg mx-auto">
