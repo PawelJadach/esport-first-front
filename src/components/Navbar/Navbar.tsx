@@ -6,7 +6,7 @@ import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 export const Navbar: React.FC = () => {
     return (
-        <div className="fixed inset-x-0 top-0 bg-base-100 pt-5 z-50">
+        <div className="fixed inset-x-0 top-0 bg-black pt-5 z-50">
             <div className="navbar max-w-screen-lg mx-auto">
                 <div className="navbar-start">
                     <Link href={"/"}>
