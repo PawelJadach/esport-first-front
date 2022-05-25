@@ -17,15 +17,13 @@ export const Navbar: React.FC = () => {
                 </div>
                 <div className="navbar-end">
                     <ul className="menu menu-horizontal p-0 hidden lg:flex gap-5">
-                        {menuItems.map((menuItem) =>
-                            menuItem ? (
-                                <MenuItem
-                                    key={menuItem.id}
-                                    href={menuItem.href}
-                                    text={menuItem.text}
-                                />
-                            ) : null,
-                        )}
+                        {menuItems.map((menuItem) => (
+                            <MenuItem
+                                key={menuItem?.id}
+                                href={menuItem?.href}
+                                text={menuItem?.text}
+                            />
+                        ))}
                         <div className="divider divider-horizontal"></div>
                         <Link href="https://www.facebook.com/EsportF1rst">
                             <a className="hover:text-primary font-bold transition-colors">

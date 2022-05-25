@@ -1,4 +1,10 @@
-export const menuItems = [
+export interface MenuItem {
+    id: number;
+    href: string;
+    text: string;
+}
+
+export const menuItems: MenuItem[] = [
     // {
     //     id: 1,
     //     href: "/",
